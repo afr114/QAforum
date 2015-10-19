@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "posts#index"
+  root to: "questions#index"
 
-  resources :posts
+  resources :questions
   resources :users
 end
