@@ -6,6 +6,9 @@
       <%= render 'shared/errors', :object => @user %>
     <% else %>
 
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>  
+
   <%= f.label :email %>
   <%= f.text_field :email %> <br>
 
