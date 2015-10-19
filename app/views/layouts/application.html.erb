@@ -12,9 +12,10 @@
       <div class="alert alert-<%= type %>"><%= message %></div>
     <% end %>
   </div>
-<!-- nav -->
-<%= link_to "Sign up", new_user_path %>
-<%= link_to "Log in", new_session_path %>
+
+  <%= render 'layouts/header' %>
+
+
 <div class="container">
   <%= yield %>
 </div>

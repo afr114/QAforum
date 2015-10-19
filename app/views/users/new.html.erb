@@ -1,23 +1,33 @@
 <h1>Sign Up</h1>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <h2>Form is invalid</h2>
-      <%= render 'shared/errors', :object => @user %>
-    <% else %>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <h2>Form is invalid</h2>
+        <%= render 'shared/errors', :object => @user %>
+      <% else %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>  
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %> <br>
+    </div>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %> <br>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %> <br>
+    </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %> <br>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %> <br>
+    </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> <br />
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %> <br />
+    </div>
 
-  <%= f.submit "Sign Up" %>
+    <%= f.submit "Sign Up" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
