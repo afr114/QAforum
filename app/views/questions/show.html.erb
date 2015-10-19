@@ -1,5 +1,15 @@
-<h1 class="question-title"><%= @question.title %></h1>
-<p>by <%= @question.user.name %>, <%= time_ago_in_words(@question.created_at) %> ago</p>
-<p class="lead well">
-  <%= @question.content %>
-</p>
+<div class="col-md-10 col-md-offset-1">
+  <h1 class="question-title"><%= @question.title %></h1>
+  <p>by <%= @question.user.name %>, <%= time_ago_in_words(@question.created_at) %> ago</p>
+  <p class="lead"><%= @question.content %></p>
+  <hr>
+  <div class="answers">
+  <% @question.answers.each do |answer| %>
+      <p><%= answer.content %></p>
+      <p class="text-right"><%= answer.user.name %></p>
+      <hr>
+    <% end %>
+  </div>
+
+  <%= render 'answers/form' %>
+</div>

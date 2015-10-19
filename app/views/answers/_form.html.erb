@@ -1,0 +1,19 @@
+<div>
+  <%= form_for [@question, @answer] do |f| %>
+
+  <% if @answer.errors.any? %>
+  <h2>Form is invalid</h2>
+  <%= render 'shared/errors', :object => @answer %>
+  <% else %>
+
+<div class="form-group">
+  <%= f.label :content %>
+  <%= f.text_area :content, class: 'form-control' %> <br>
+</div>
+
+<div class="text-center pull-left">
+  <%= f.submit "Answer", class: 'btn btn-default' %>
+</div>
+<% end %>
+<% end %>
+</div>
