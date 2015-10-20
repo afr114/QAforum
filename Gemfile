@@ -14,6 +14,7 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "font-awesome-rails"
+gem 'activerecord-reputation-system', require: 'reputation_system'
 
 group :production do
   gem 'puma'
@@ -27,7 +28,7 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
-  # gem 'letter_opener'
+  gem 'letter_opener'
 end
 
 group :test, :development do

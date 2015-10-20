@@ -4,7 +4,18 @@ class QuestionsController < ApplicationController
   # before_action :authorize, only: [ :edit, :destroy ]
 
   def index
-    @questions = Question.all.order(created_at: :desc)
+    @questions = Question.find_with_reputation(:votes, :all, order: "votes desc")
+  end
+
+  def vote
+    begin
+      value = params[:type] == "up" ? 1 : -1
+      @question = Question.find(params[:id])
+      @question.add_evaluation(:votes, value, current_user)
+      redirect_to :back, notice: "Thank you for voting"
+    rescue ActiveRecord::RecordInvalid
+      redirect_to :back, notice: "You already voted!"
+    end
   end
 
   def show
@@ -31,6 +42,8 @@ class QuestionsController < ApplicationController
 
   def edit
   end
+
+
 
   def update
     if @question.update(question_params)

@@ -4,10 +4,6 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :title, :content
 
-
-  # searching
-  def self.search(query)
-    where("title like ?", "%#{query}%")
-  end
+  has_reputation :votes, source: :user, aggregated_by: :sum
 
 end
