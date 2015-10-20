@@ -1,7 +1,6 @@
-.fa {
+.navbar-brand .fa {
   color: white;
 }
-
 .navbar-text {
   color: white !important;
 }
@@ -22,4 +21,29 @@
 #flash-container {
   margin: auto;
   width: 50%;
+}
+
+.container.body {
+  margin-top: 5%;
+}
+
+li.well {
+  list-style-type:none;
+  font-size: large;
+}
+
+a{
+  color: black;
+}
+
+div#reputationlinks{
+  margin-bottom: 1%;
+}
+
+i.fa.fa-arrow-up {
+  font-size: large;
+}
+
+i.fa.fa-arrow-down {
+  font-size: large;
 }

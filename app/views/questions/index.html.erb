@@ -1,10 +1,6 @@
 <% @questions.each do |question| %>
+  <div>
     <li class="well">
-      <%= pluralize question.reputation_for(:votes).to_i, "vote" %>
-      <% if current_user && !current_user.voted_for?(question) %>
-      <%= link_to "up", vote_question_path(question, type: "up"), method: "post" %>
-      <%= link_to "down", vote_question_path(question, type: "down"), method: "post" %>
-      <% end %>
     <%= link_to question_path(question) do %>
       <%= question.title %>
   <% end %>
@@ -12,4 +8,16 @@
         <%= question.user.name %>
       </span>
     </li>
+  </div>
+  <div id="reputationlinks">
+    <% if current_user && !current_user.voted_for?(question) %>
+    <%= link_to vote_question_path(question, type: "up"), method: "post" do %>
+    <%= fa_icon "arrow-up" %>
+    <% end %> |
+    <%= link_to vote_question_path(question, type: "down"), method: "post" do %>
+    <%= fa_icon "arrow-down" %>
+    <% end %> |
+    <%= pluralize question.reputation_for(:votes).to_i, "vote" %>
+    <% end %>
+  </div>
 <% end %>
