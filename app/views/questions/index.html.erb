@@ -1,15 +1,15 @@
 <% @questions.each do |question| %>
-  <%= link_to question_path(question) do %>
     <li class="well">
       <%= pluralize question.reputation_for(:votes).to_i, "vote" %>
       <% if current_user && !current_user.voted_for?(question) %>
       <%= link_to "up", vote_question_path(question, type: "up"), method: "post" %>
       <%= link_to "down", vote_question_path(question, type: "down"), method: "post" %>
       <% end %>
+    <%= link_to question_path(question) do %>
       <%= question.title %>
+  <% end %>
       <span class="pull-right"><%= time_ago_in_words(question.created_at) %> ago by
         <%= question.user.name %>
       </span>
     </li>
-  <% end %>
 <% end %>

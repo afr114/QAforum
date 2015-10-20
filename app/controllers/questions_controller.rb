@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = Answer.new
+    @answers = @question.answers.find_with_reputation(:votes, :all, order: "votes desc")
   end
 
   def new

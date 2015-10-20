@@ -22,7 +22,18 @@ class AnswersController < ApplicationController
     else
       render 'new'
     end
+  end
 
+
+  def vote
+    begin
+      value = params[:type] == "up" ? 1 : -1
+      @answer = Answer.find(params[:id])
+      @answer.add_evaluation(:votes, value, current_user)
+      redirect_to :back, notice: "Thank you for voting"
+    rescue ActiveRecord::RecordInvalid || NameError
+      redirect_to :back, notice: "Vote added!"
+    end
   end
 
   def edit
