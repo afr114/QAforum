@@ -20,6 +20,8 @@ class QuestionsController < ApplicationController
     @question.user = current_user
 
     if @question.save
+      UserMailer.new_question_email(current_user).deliver_now
+
       flash[:success] = "Question created successfully"
       redirect_to @question
     else

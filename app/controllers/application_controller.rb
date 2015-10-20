@@ -16,5 +16,7 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_user # makes accessible in views
 
-
+    def log_in (user)
+      session[:user_id] = user.id
+    end
 end

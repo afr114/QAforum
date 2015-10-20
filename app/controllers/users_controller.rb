@@ -14,10 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in(@user)
       # send welcome email
       UserMailer.signup_confirmation(@user).deliver_now
-      redirect_to root_url
       flash[:notice] = "Thank you for signing up!"
+      redirect_to root_url
     else
       render "new"
     end
