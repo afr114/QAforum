@@ -7,13 +7,17 @@
   <div class="answers">
     <% if @answers.any? %>
       <% @answers.each do |answer| %>
-        | <%= pluralize answer.reputation_for(:votes).to_i, "vote" %>
-        <% if current_user && !current_user.voted_for_answer?(answer) %>
-            | <%= link_to "up", vote_answer_path(answer, type: "up"), method: "post" %>
-            | <%= link_to "down", vote_answer_path(answer, type: "down"), method: "post" %>
             <p><%= answer.content %></p>
-            <p class="text-right"><%= answer.user.name %></p>
             <hr>
+            <% if current_user && !current_user.voted_for_answer?(answer) %>
+            <%= link_to vote_answer_path(answer, type: "up"), method: "post" do %>
+            <%= fa_icon "arrow-up" %>
+            <% end %>
+            <%= link_to vote_answer_path(answer, type: "down"), method: "post" do %> |
+            <%= fa_icon "arrow-down" %>
+            <% end %> |
+            <%= pluralize answer.reputation_for(:votes).to_i, "vote" %>
+            <p class="text-right"><%= answer.user.name %></p>
         <% end %>
       <% end %>
     <% else %>
